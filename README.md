@@ -29,6 +29,7 @@ Over the years E-Books, Online exams, and various other new methods have come in
 - [MySQLDB](https://mysqlclient.readthedocs.io/user_guide.html)
 - [Flask](https://flask.palletsprojects.com/en/2.2.x/)
 - [Pandas](https://pandas.pydata.org/docs/index.html)
+- [Matplotlib](https://matplotlib.org/)
 
 <img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/architecturefyp.drawio.png" width="80%" height="80%">
 
