@@ -46,17 +46,24 @@ We try to validate the importence of each question through standardised proporti
 ## Demo 
 
 **Login**
-<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/login1.PNG">
+<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/login1.PNG" width="70%" height="70%">
 
 
 **Reset Password**
 
-<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/resetpass.PNG">
+<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/resetpass.PNG" width="70%" height="70%">
 
+**Analytics and reports**
 
 <img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/plots.gif">
 
+**Analysis and update of reports onto db**
+
+
 <img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/upload.gif">
+
+**Homepage Analysis and Attainment**
+
 
 <img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/prog.gif">
 
