@@ -29,6 +29,6 @@ Over the years E-Books, Online exams, and various other new methods have come in
 - [MySQLDB](https://mysqlclient.readthedocs.io/user_guide.html)
 - [Flask](https://flask.palletsprojects.com/en/2.2.x/)
 - [Pandas](https://pandas.pydata.org/docs/index.html)
-<div style="width:50px; height:50px">
-![architecturefyp.drawio](./Images/architecturefyp.drawio.png  "/architecturefyp.drawio.png")
-</div>
+
+<img src="./Images/architecturefyp.drawio.png/architecturefyp.drawio.png" width="50%" height="50%">
+
