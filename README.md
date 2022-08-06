@@ -36,7 +36,9 @@ Over the years E-Books, Online exams, and various other new methods have come in
 
 Data in this project refers to proporties involved in the visualization and attainment process. Below is the image of the flow chat that specifies how the data is transformed through different modules in the backend to generate the desired results.
 
-<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/data_flow.png" width="80%" height="80%">
+<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/data_flow.png" width="70%" height="70%">
+
+We try to validate the importence of each question through standardised proporties used for NAAC accredition such as COs,POs, BTLs. The teaching methodologies , exam validations and mark distrution is analysed based on the above given proporties so as to change and upgrade the curriculum.
 
 
 
