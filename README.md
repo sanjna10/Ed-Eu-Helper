@@ -53,16 +53,16 @@ We try to validate the importence of each question through standardised proporti
 
 <img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/resetpass.PNG" width="70%" height="70%">
 
-**Analytics and reports**
+**Analytics and reports module**
 
 <img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/plots.gif">
 
-**Analysis and update of reports onto db**
+**Analysis  and update of reports onto db module**
 
 
 <img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/upload.gif">
 
-**Homepage Analysis and Attainment**
+**Analysis and Attainment View**
 
 
 <img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/prog.gif">
