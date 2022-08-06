@@ -18,12 +18,11 @@ Over the years E-Books, Online exams, and various other new methods have come in
 
 **Back-End**
 
-- [Python3](https://nodejs.org/en/)
-- [Express.JS](https://expressjs.com/)
-- [Mongoose.JS](https://mongoosejs.com/)
-- [Socket.IO](https://socket.io/)
+- [Python3](https://www.python.org/download/releases/3.0/)
+
 
 **Database**
 
 - [MySQLDB](https://mysqlclient.readthedocs.io/user_guide.html)
-
+- [Flask](https://flask.palletsprojects.com/en/2.2.x/)
+- [Pandas](https://pandas.pydata.org/docs/index.html)
