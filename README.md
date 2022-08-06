@@ -41,5 +41,16 @@ Data in this project refers to proporties involved in the visualization and atta
 
 We try to validate the importence of each question through standardised proporties used for NAAC accredition such as COs,POs, BTLs. The teaching methodologies , exam validations and mark distrution is analysed based on the above given proporties so as to change and upgrade the curriculum.
 
+## Mock Demo 
+
+**Login**
+<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/login1.png" width="70%" height="70%">
+
+
+**Reset Password**
+
+<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/resetpass.png" width="70%" height="70%">
+
+
 
 
