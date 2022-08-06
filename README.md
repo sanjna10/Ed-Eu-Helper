@@ -30,5 +30,5 @@ Over the years E-Books, Online exams, and various other new methods have come in
 - [Flask](https://flask.palletsprojects.com/en/2.2.x/)
 - [Pandas](https://pandas.pydata.org/docs/index.html)
 
-![architecturefyp.drawio](./Images/architecturefyp.drawio.png "architecturefyp.drawio")
+![architecturefyp.drawio](./Images/architecturefyp.drawio.png "architecturefyp.drawio" {width=40px height=400px})
 
