@@ -46,12 +46,12 @@ We try to validate the importence of each question through standardised proporti
 ## Demo 
 
 **Login**
-<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/login1.png" width="70%" height="70%">
+<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/login1.png">
 
 
 **Reset Password**
 
-<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/resetpass.png" width="70%" height="70%">
+<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/resetpass.png" ">
 
 
 
