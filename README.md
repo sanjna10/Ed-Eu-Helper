@@ -30,7 +30,7 @@ Over the years E-Books, Online exams, and various other new methods have come in
 - [Flask](https://flask.palletsprojects.com/en/2.2.x/)
 - [Pandas](https://pandas.pydata.org/docs/index.html)
 
-<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/architecturefyp.drawio.png" width="50%" height="50%">
+<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/architecturefyp.drawio.png" width="80%" height="80%">
 
 ## Data
 
