@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+<link rel="icon" type="image/x-icon" href="/static/unknown.jpeg">
+
+</head>
+<style>
+  table.dataframe, .dataframe th, .dataframe td {
+border: none;
+border-bottom: 1px solid #C8C8C8;
+border-collapse: collapse;
+text-align:left;
+padding: 10px;
+margin-bottom: 40px;
+font-size: 0.85em;
+border: 1;
+width: 1%;
+height: auto;
+}
+/* .th {
+font-size: 2em; 
+font-weight: bold;
+} */
+ </style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <img src="/static/navicon.jpeg" style="width:12%;height:12%" class="center">
+
+        <p style="    color: white;
+        padding-left: 1400px;
+        padding-top: 40px;
+        position: absolute">{{session.name}}</p>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        
+        
+   
+      
+
+      </nav>
+      <div class="nav-adj">
+<div class="sidenav">
+  <a href="{{url_for('dashboard')}}" class="nav-space">Home</a>
+  <a href="#" class="nav-space">Reset password</a>
+  <a href="{{url_for('course_reg')}}" class="nav-space">Register course</a>
+  
+  <button class="dropdown-btn">Download csv
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="{{url_for('download_csv_1')}}">periodical/end semester</a>
+    <a href="{{url_for('download_csv_2')}}">continuous assessment</a>
+  </div>
+  <button class="dropdown-btn">Upload csv
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="{{url_for('upload_csv_1')}}">periodical/end semester</a>
+    <a href="{{url_for('upload_csv_2')}}">continuous assessment</a>
+  </div>
+  <a  href="{{url_for('log_out')}}">Log out</a>
+
+  
+</div>
+
+<div class="main">
+
+  
+  
+  
+  {% for your_list_element in records %}
+  <h2 style="padding-top: 30px; text-align: center;">{{your_list_element[0]}}</h2>
+  <p><b>Department:</b>{{your_list_element[2]}}</p>
+  <p><b>Batch:</b>{{your_list_element[3]}}</p>
+  <p><b>Year:</b>{{your_list_element[5]}}</p>
+  <p><b>Semester:</b>{{your_list_element[4]}}</p>
+  <div class="squarecard" style="text-align:left;width:500px;height:auto;box-shadow: 0 0 5px 5px blue;margin-left: 35%;">
+    <table>
+      <tr>
+        <th>QP</th>
+        <th>CSV</th>
+        <th>Assessment</th>
+      </tr>
+    {% set found1=namespace(value=0) %}
+    {% set found=namespace(value=0) %}
+    {% for i in qps %}
+    {% if "First Assessment" in i[0] %}
+    {% set found.value=1 %}
+    {% endif %}
+    {% endfor %}
+
+    {% if your_list_element[6] != None and found.value>0 %}
+    <tr><td>&#9989;</td><td>&#9989;</td> <td>Periodicals 1</td>
+      <td><button class="btn btn-sm btn-outline-secondary" id="myBtn1" style="float:right;margin-left: 70px;">Update CSV</button></td>
+    <td><form action="{{url_for('course_outcome')}}" method="post">
+      <input type="hidden" name="year" value="{{your_list_element[5]}}">
+      <input type="hidden" name="sem" value="{{your_list_element[4]}}">
+      <input type="hidden" name="batch" value="{{your_list_element[3]}}">
+      <input type="hidden" name="dept" value="{{your_list_element[2]}}">
+      <input type="hidden" name="cc" value="{{your_list_element[0]}}">
+      <input type="hidden" name="assess" value="p1">
+      <button type="submit" style="margin-left: 20px;" class="btn btn-sm btn-outline-success">
+      Get analysis
+    </button>
+    </form></td></tr>
+      {% set found1.value=found1.value+1 %}
+      {% endif %}
+    {% if your_list_element[6] == None and found.value>0 %}
+    <tr><td>&#9989;</td><td>&#10060;</td> <td>Periodicals 1</td>
+      <td><button class="btn btn-sm btn-outline-secondary" id="myBtn1" style="float:right;margin-left: 70px;">Upload CSV</button></td></tr>
+    {% endif %}
+    {% if your_list_element[6] != None and found.value==0 %}
+    <tr><td>&#10060;</td><td>&#9989;</td> <td>Periodicals 1</td></tr>
+    {% endif %}
+    {% if your_list_element[6] == None and found.value==0 %}
+    <tr><td>&#10060;</td><td>&#10060;</td> <td>Periodicals 1</td></tr>
+    {% endif %}
+    
+    {% set found.value=0 %}
+    {% for i in qps %}
+    {% if "Second Assessment" in i[0] %}
+    {% set found.value=1 %}
+    {% endif %}
+    {% endfor %}
+
+    {% if your_list_element[7] != None and found.value>0 %}
+    <tr><td>&#9989;</td><td>&#9989;</td> <td>Periodicals 2</td>
+      <td><button class="btn btn-sm btn-outline-secondary" id="myBtn2" style="float:right;margin-left: 70px;">Update CSV</button></td>
+      <td><form action="{{url_for('course_outcome')}}" method="post">
+        <input type="hidden" name="year" value="{{your_list_element[5]}}">
+        <input type="hidden" name="sem" value="{{your_list_element[4]}}">
+        <input type="hidden" name="batch" value="{{your_list_element[3]}}">
+        <input type="hidden" name="dept" value="{{your_list_element[2]}}">
+        <input type="hidden" name="cc" value="{{your_list_element[0]}}">
+        <input type="hidden" name="assess" value="p2">
+      <button type="submit" style="margin-left: 20px;" class="btn btn-sm btn-outline-success">
+        Get analysis
+      </button>
+      </form></td></tr>
+      {% set found1.value=found1.value+1 %}
+      {% endif %}
+    {% if your_list_element[7] == None and found.value>0 %}
+    <tr><td>&#9989;</td><td>&#10060;</td> <td>Periodicals 2</td>
+      <td><button class="btn btn-sm btn-outline-secondary" id="myBtn2" style="float:right;margin-left: 70px;">Upload CSV</button></td></tr>
+    {% endif %}
+    {% if your_list_element[7] != None and found.value==0 %}
+    <tr><td>&#10060;</td><td>&#9989;</td> <td>Periodicals 2</td></tr>
+    {% endif %}
+    {% if your_list_element[7] == None and found.value==0 %}
+    <tr><td>&#10060;</td><td>&#10060;</td> <td>Periodicals 2</td></tr>
+
+
+    {% endif %}
+
+    {% set found.value=0 %}
+    
+    {% set qpv=namespace(value=0) %}
+    {% set mv=namespace(value=0) %}
+
+    {% for ele in ca %}
+
+    {% if ele[5]!= None %}
+    {% set qpv.value=qpv.value+1 %}
+    {% endif %}
+
+    {% if ele[6]!= None %}
+    {% set mv.value=mv.value+1 %}
+    {% endif %}
+    
+    {% endfor %}
+    {% if qpv.value-mv.value ==0 and qpv.value>0 %}
+    {% set found.value=0 %}
+    {% endif %}
+
+    {% if qpv.value-mv.value >0 and qpv.value>0 %}
+    {% set found.value=1 %}
+    {% endif %}
+
+    {% if qpv.value-mv.value ==0 and qpv.value==0 %}
+    {% set found.value=2 %}
+    {% endif %}
+
+    {% if found.value==0 %}
+    <tr><td>&#9989;</td><td>&#9989;</td> <td>CA</td>
+      <td><button class="btn btn-sm btn-outline-secondary" id="myBtn3" style="float:right;margin-left: 70px;">Update CSV</button></td></tr>
+      {% set found1.value=found1.value+1 %}
+      {% endif %}
+    {% if found.value==1 %}
+    <tr><td>&#9989;</td><td>&#10060;</td> <td>CA</td>
+      <td><button class="btn btn-sm btn-outline-secondary" id="myBtn3" style="float:right;margin-left: 70px;">Upload CSV</button></td></tr>
+    {% endif %}
+    
+    {% if found.value==2 %}
+    <tr><td>&#10060;</td><td>&#10060;</td> <td>CA</td></tr>
+    {% endif %}
+
+    {% set found.value=0 %}
+    {% for i in qps %}
+    {% if "End Semester" in i[0] %}
+    {% set found.value=1 %}
+    {% endif %}
+    {% endfor %}
+
+    {% if your_list_element[9] != None and found.value>0 %}
+    <tr><td>&#9989;</td><td>&#9989;</td> <td>End Semester</td>
+      <td><button class="btn btn-sm btn-outline-secondary" id="myBtn4" style="float:right;margin-left: 70px;">Update CSV</button></td>
+      <td><form action="{{url_for('course_outcome')}}" method="post">
+        <input type="hidden" name="year" value="{{your_list_element[5]}}">
+        <input type="hidden" name="sem" value="{{your_list_element[4]}}">
+        <input type="hidden" name="batch" value="{{your_list_element[3]}}">
+        <input type="hidden" name="dept" value="{{your_list_element[2]}}">
+        <input type="hidden" name="cc" value="{{your_list_element[0]}}">
+        <input type="hidden" name="assess" value="endsem">
+        <button type="submit" style="margin-left: 20px;" class="btn btn-sm btn-outline-success">
+        Get analysis
+      </button>
+      </form></td></tr>
+      {% set found1.value=found1.value+1 %}
+      {% endif %}
+    {% if your_list_element[9] == None and found.value>0 %}
+    <tr><td>&#9989;</td><td>&#10060;</td> <td>End Semester</td>
+      <td><button class="btn btn-sm btn-outline-secondary" id="myBtn4" style="float:right;margin-left: 70px;">Upload CSV</button></td></tr>
+    {% endif %}
+    {% if your_list_element[9] != None and found.value==0 %}
+    <tr><td>&#10060;</td><td>&#9989;</td> <td>End Semester</td>
+    </tr>
+    {% endif %}
+    {% if your_list_element[9] == None and found.value==0 %}
+    <tr><td>&#10060;</td><td>&#10060;</td> <td>End Semester</td>
+    </tr>
+    {% endif %}
+
+
+    
+    </table>
+    {% if found1.value==4%}
+  
+  <button id="myBtn5"style="margin-left:35%;margin-top: 5%;margin-bottom: 5%;" class="btn btn-outline-info">Get attainment</button>
+  {% endif %}
+  {% if your_list_element[10]!=None %}
+  <form action="{{url_for('download_attainment_1')}}" method="post">
+    
+      <input type="hidden" name="year" value="{{your_list_element[5]}}">
+      <input type="hidden" name="sem" value="{{your_list_element[4]}}">
+      <input type="hidden" name="batch" value="{{your_list_element[3]}}">
+      <input type="hidden" name="dept" value="{{your_list_element[2]}}">
+      <input type="hidden" name="cc" value="{{your_list_element[0]}}">
+    
+  <button type="submit" style="margin-left:30%;margin-bottom: 5%;" class="btn btn-outline-success">Download attainment</button>
+  
+  </form>
+  {% endif %}   
+  
+
+   
+   {% endfor %}
+</div>
+<br>
+<br>
+<div style="margin-left:1%">
+{% for table in tab %}
+    {{ table|safe }}
+    {% endfor %}
+    
+  </div>
+  <br>
+  <br>
+
+
+
+
+<div id="myModal1" class="modal1" style="display: none;
+position: fixed; 
+z-index: 1;
+padding-top: 100px;
+left: 0;
+top: 0;
+width: 100%; 
+height: 100%;
+overflow: auto; 
+background-color: rgb(0,0,0); 
+background-color: rgba(0,0,0,0.4);">
+
+
+
+  <!-- Modal content -->
+  <div class="modal-content1" style=
+  "background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  height: auto;">
+    <span class="close">&times;</span>
+    <h3 style="text-align:center">Upload/Update CSV for Periodical 1</h3>
+    <br>
+    <br>
+    {% for your_list_element in records %}
+    <form action="{{url_for('upload_csv_1')}}" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="year" value="{{your_list_element[5]}}">
+      <input type="hidden" name="sem" value="{{your_list_element[4]}}">
+      <input type="hidden" name="batch" value="{{your_list_element[3]}}">
+      <input type="hidden" name="dept" value="{{your_list_element[2]}}">
+      <input type="hidden" name="cc" value="{{your_list_element[0]}}">
+      <input type="hidden" name="ex" value="p1">
+      <label for="csv">Upload CSV file</label>
+      <br>
+      <input type="file" name="csv" id="csv">
+      <br>
+      <br>
+      <button class="btn btn-primary" type="submit">Update Information</button>
+    </form>
+    {% endfor %}
+  </div>
+
+</div>
+
+<div id="myModal2" class="modal1" style="display: none;
+position: fixed; 
+z-index: 1;
+padding-top: 100px;
+left: 0;
+top: 0;
+width: 100%; 
+height: 100%;
+overflow: auto; 
+background-color: rgb(0,0,0); 
+background-color: rgba(0,0,0,0.4);">
+
+
+
+  <!-- Modal content -->
+  <div class="modal-content1" style=
+  "background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  height: auto;">
+    <span class="close">&times;</span>
+    <h3 style="text-align:center">Upload/Update CSV for Periodical 2</h3>
+    <br>
+    <br>
+    {% for your_list_element in records %}
+    <form action="{{url_for('upload_csv_1')}}" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="year" value="{{your_list_element[5]}}">
+      <input type="hidden" name="sem" value="{{your_list_element[4]}}">
+      <input type="hidden" name="batch" value="{{your_list_element[3]}}">
+      <input type="hidden" name="dept" value="{{your_list_element[2]}}">
+      <input type="hidden" name="cc" value="{{your_list_element[0]}}">
+      <input type="hidden" name="ex" value="p2">
+      <label for="csv">Upload CSV file</label>
+      <br>
+      <input type="file" name="csv" id="csv">
+      <br>
+      <br>
+      <button class="btn btn-primary" type="submit">Update Information</button>
+    </form>
+    {% endfor %}
+  </div>
+
+</div>
+
+<div id="myModal3" class="modal1" style="display: none;
+position: fixed; 
+z-index: 1;
+padding-top: 100px;
+left: 0;
+top: 0;
+width: 100%; 
+height: 100%;
+overflow: auto; 
+background-color: rgb(0,0,0); 
+background-color: rgba(0,0,0,0.4);">
+
+
+
+  <!-- Modal content -->
+  <div class="modal-content1" style=
+  "background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  height: auto;">
+    <span class="close">&times;</span>
+    <h3 style="text-align:center">Upload/Update CSV for Continuous Assessments</h3>
+    <br>
+    <br>
+    <label for="choose">Select assessment to modify corresponding marks</label>
+    <form action="{{url_for('upload_csv_2')}}" method="post" enctype="multipart/form-data">
+    <fieldset>
+      {% for x in ca %}
+      
+      <input type="radio" name="choice" id="{{x[4]}}" value="{{x[4]}}">
+      <label for="{{x[4]}}" style="font-size:small">{{x[4]}}</label>
+      <br>
+      {% endfor %}
+    </fieldset>
+    
+    <br>
+    
+    {% for your_list_element in records %}
+    
+      <input type="hidden" name="year" value="{{your_list_element[5]}}">
+      <input type="hidden" name="sem" value="{{your_list_element[4]}}">
+      <input type="hidden" name="batch" value="{{your_list_element[3]}}">
+      <input type="hidden" name="dept" value="{{your_list_element[2]}}">
+      <input type="hidden" name="cc" value="{{your_list_element[0]}}">
+      
+      <label for="csv">Upload CSV file</label>
+      <br>
+      <input type="file" name="csv" id="csv">
+      <br>
+      <br>
+      <button class="btn btn-primary" type="submit">Update Information</button>
+    </form>
+    {% endfor %}
+  </div>
+
+</div>
+
+<div id="myModal4" class="modal1" style="display: none;
+position: fixed; 
+z-index: 1;
+padding-top: 100px;
+left: 0;
+top: 0;
+width: 100%; 
+height: 100%;
+overflow: auto; 
+background-color: rgb(0,0,0); 
+background-color: rgba(0,0,0,0.4);">
+
+
+
+  <!-- Modal content -->
+  <div class="modal-content1" style=
+  "background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  height: auto;">
+    <span class="close">&times;</span>
+    <h3 style="text-align:center">Upload/Update CSV for End Semester</h3>
+    <br>
+    <br>
+    {% for your_list_element in records %}
+    <form action="{{url_for('upload_csv_1')}}" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="year" value="{{your_list_element[5]}}">
+      <input type="hidden" name="sem" value="{{your_list_element[4]}}">
+      <input type="hidden" name="batch" value="{{your_list_element[3]}}">
+      <input type="hidden" name="dept" value="{{your_list_element[2]}}">
+      <input type="hidden" name="cc" value="{{your_list_element[0]}}">
+      <input type="hidden" name="ex" value="endsem">
+      <label for="csv">Upload CSV file</label>
+      <br>
+      <input type="file" name="csv" id="csv">
+      <br>
+      <br>
+      <button class="btn btn-primary" type="submit">Update Information</button>
+    </form>
+    {% endfor %}
+  </div>
+
+  
+
+</div>
+
+<div id="myModal5" class="modal1" style="display: none;
+position: fixed; 
+z-index: 1;
+padding-top: 100px;
+left: 0;
+top: 0;
+width: 100%; 
+height: 100%;
+overflow: auto; 
+background-color: rgb(0,0,0); 
+background-color: rgba(0,0,0,0.4);">
+
+
+
+  <!-- Modal content -->
+  <div class="modal-content1" style=
+  "background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  height: auto;">
+    <span class="close">&times;</span>
+    <h3 style="text-align:center">Get Attainment</h3>
+    <br>
+    <br>
+    {% for your_list_element in records %}
+    <form action="{{url_for('get_attainment')}}" method="post" style="margin-left:30%;">
+      <h5>Enter Indirect attainments</h5>
+      {% for i in range(prop) %}
+      <label for="CO0{{i+1}}">CO0{{i+1}}</label>
+      <input type="number" name="CO0{{i+1}}" id="CO0{{i+1}}" step="0.1">
+      <br>
+      <br>
+      {% endfor %}
+      <input type="hidden" name="year" value="{{your_list_element[5]}}">
+        <input type="hidden" name="sem" value="{{your_list_element[4]}}">
+        <input type="hidden" name="batch" value="{{your_list_element[3]}}">
+        <input type="hidden" name="dept" value="{{your_list_element[2]}}">
+        <input type="hidden" name="cc"value="{{your_list_element[0]}}">
+        <button type="submit" style="margin-left:20%;margin-top: 5%;margin-bottom: 5%;" class="btn btn-outline-info">Get attainment</button>
+    </form>
+    {% endfor %}
+  </div>
+
+  
+
+</div>
+
+
+</div>
+</div>
+
+<script>
+
+var modal = document.getElementById("myModal4");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn4");
+
+var modal1 = document.getElementById("myModal1");
+
+// Get the button that opens the modal
+var btn1 = document.getElementById("myBtn1");
+
+var modal2 = document.getElementById("myModal2");
+
+// Get the button that opens the modal
+var btn2 = document.getElementById("myBtn2");
+
+var modal3 = document.getElementById("myModal3");
+
+// Get the button that opens the modal
+var btn3 = document.getElementById("myBtn3");
+
+var modal4 = document.getElementById("myModal5");
+
+// Get the button that opens the modal
+var btn4 = document.getElementById("myBtn5");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+if(btn!=null){
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+}
+if(btn1!=null){
+btn1.onclick = function() {
+  modal1.style.display = "block";
+}
+}
+if(btn2!=null){
+btn2.onclick = function() {
+  modal2.style.display = "block";
+}
+}
+if(btn3!=null){
+btn3.onclick = function() {
+  modal3.style.display = "block";
+}
+}
+if(btn4!=null){
+btn4.onclick = function() {
+  modal4.style.display = "block";
+}
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function(event) {
+  modal.style.display = "none";
+  modal1.style.display= "none";
+  modal2.style.display= "none";
+  modal3.style.display= "none";
+  modal4.style.display= "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal || event.target == modal1|| event.target == modal2 || event.target == modal3 || event.target == modal4) {
+    modal.style.display = "none";
+    modal1.style.display = "none";
+    modal2.style.display="none";
+    modal3.style.display="none";
+    modal4.style.display= "none";
+  }
+}
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+
+</script>
+
+</body>
+</html> 

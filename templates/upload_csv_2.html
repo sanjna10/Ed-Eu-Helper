@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="../static/dashboard.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+<link rel="stylesheet" href="../static/upload_csv_1.css">
+<link rel="icon" type="image/x-icon" href="/static/unknown.jpeg">
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <img src="/static/navicon.jpeg" style="width:12%;height:12%" class="center">
+
+        <p style="    color: white;
+        padding-left: 1400px;
+        padding-top: 40px;
+        position: absolute">{{session.name}}</p>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        
+       
+   
+      
+
+      </nav>
+      <div class="nav-adj">
+<div class="sidenav">
+  <a href="{{url_for('dashboard')}}" class="nav-space">Home</a>
+  <a href="#" class="nav-space">Reset password</a>
+  <a href="{{url_for('course_reg')}}" class="nav-space">Register course</a>
+  
+  <button class="dropdown-btn">Download csv
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="{{url_for('download_csv_1')}}">periodical/end semester</a>
+    <a href="{{url_for('download_csv_2')}}">continuous assessment</a>
+  </div>
+  <button class="dropdown-btn">Upload csv
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="{{url_for('upload_csv_1')}}">periodical/end semester</a>
+    <a href="{{url_for('upload_csv_2')}}">continuous assessment</a>
+  </div>
+  <a  href="{{url_for('log_out')}}">Log out</a>
+
+  
+</div>
+
+  <div class="main">
+    <h2 style="padding-top: 30px; text-align: center;"></b></h2>
+    <p style="padding-top: 30px; text-align: center; color: white;">upload csv 1</p>
+    <div class="main-block">
+      <div class="left-part">
+        <i class="fas fa-graduation-cap"></i>
+        <h1>Upload CSV file for continuous assessments</h1>
+        <p></p>
+        
+      </div>
+      <form action="/">
+        <div class="title">
+          <i class="fas fa-pencil-alt"></i> 
+          <h2>UPLOAD DETAILS</h2>
+        </div>
+        <div class="info">
+          <input class="fname" type="text" name="name" placeholder="dept">
+          <input type="text" name="batch" placeholder="batch">
+         
+          <input type="number" name="sem" placeholder="sem">
+          <input type="text" name="year" placeholder="year">
+          <input type="file" name="qp" id="qp">
+          <input type="file" name="uploadfile" id="img" style="display:none;"/>
+          <label for="img">Click me to upload image</label>
+  
+  
+  
+         
+        </div>
+        
+        <button type="submit" >Submit</button>
+      </form>
+    </div>
+  
+  </div>
+</div>
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script>
+
+</body>
+</html> 
