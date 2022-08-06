@@ -51,7 +51,7 @@ We try to validate the importence of each question through standardised proporti
 
 **Reset Password**
 
-<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/resetpass.png" ">
+<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/resetpass.png">
 
 
 
