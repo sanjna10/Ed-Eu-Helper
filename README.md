@@ -8,6 +8,8 @@ Over the years E-Books, Online exams, and various other new methods have come in
 
 - [Tech](#tech)<br/>
 - [Data](#data)<br/>
+- [Demo](#demo)<br/>
+
 
 ## Tech
 
@@ -29,6 +31,7 @@ Over the years E-Books, Online exams, and various other new methods have come in
 - [MySQLDB](https://mysqlclient.readthedocs.io/user_guide.html)
 - [Flask](https://flask.palletsprojects.com/en/2.2.x/)
 - [Pandas](https://pandas.pydata.org/docs/index.html)
+- [Matplotlib](https://matplotlib.org/)
 
 <img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/architecturefyp.drawio.png" width="80%" height="80%">
 
@@ -39,6 +42,17 @@ Data in this project refers to proporties involved in the visualization and atta
 <img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/data_flow.png" width="70%" height="70%">
 
 We try to validate the importence of each question through standardised proporties used for NAAC accredition such as COs,POs, BTLs. The teaching methodologies , exam validations and mark distrution is analysed based on the above given proporties so as to change and upgrade the curriculum.
+
+## Demo 
+
+**Login**
+<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/login1.png">
+
+
+**Reset Password**
+
+<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/resetpass.png">
+
 
 
 
