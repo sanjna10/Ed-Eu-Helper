@@ -58,7 +58,7 @@ We try to validate the importence of each question through standardised proporti
 
 <img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/upload.gif">
 
-<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/prog.gif.gif">
+<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/prog.gif">
 
 
 
