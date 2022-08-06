@@ -7,6 +7,7 @@ Over the years E-Books, Online exams, and various other new methods have come in
 ## Table of Contents
 
 - [Tech](#tech)<br/>
+- [Module](#module)<br/>
 - [Data](#data)<br/>
 - [Demo](#demo)<br/>
 
