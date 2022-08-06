@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Login Page Template - W3jar.Com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/login.css">
+    <link rel="icon" type="image/x-icon" href="/static/unknown.jpeg">
+
+</head>
+
+<body >
+    <div class="bg-img" >    
+    </div>
+
+    <div class="main-container">
+        <div class="form-container">
+
+            <div class="form-body">
+
+                <h2 class="title">OTP Verification</h2>
+                <br><br>
+                <form action="{{ url_for('validateotp') }}" method="post">
+                    
+                    <label for="email1">Enter OTP</label>
+                    <input type="number" name="otp" id="email1" placeholder="Enter your OTP">
+                    <br><br>
+                    <label for="email2">Enter Password</label>
+                    <input type="password" name="password" id="email2" placeholder="Enter your password">
+                    <br><br>
+                    <label for="email3">Confirm Password</label>
+                    <input type="password" name="updatepassword" id="email3" placeholder="Re-enter Password">
+                    <br><br>
+                    <input type="submit" name="confirm" value="Reset Password">
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+</html>

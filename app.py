@@ -41,8 +41,6 @@ email=''
 def home():
     return render_template("login.html")
 
-if __name__ == "__main__":
-    app.run(debug=True)
 
 def establish_connection():
     connection = mysql.connector.connect(host='localhost',
@@ -165,3 +163,21 @@ def validateotp():
         flash("wrong otp")
         return render_template('validateotp.html')
     return render_template('validateotp.html')
+
+@app.route("/dashboard",methods=['POST', 'GET'])
+
+def dashboard():
+    if request.method=='GET':
+        if session['name']==None:
+            return render_template("login.html")
+        else:
+            connection=establish_connection()
+            cursor = connection.cursor()
+            cursor.execute("SELECT * from courses where faculty='{}'".format(session["name"]))
+            record = cursor.fetchall()
+            cursor.close()
+            connection.close()
+            return render_template("dashboard1.html",records=record)
+
+if __name__ == "__main__":
+    app.run(debug=True)

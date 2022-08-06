@@ -3,22 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Login Page Template - W3jar.Com</title>
+    <title>Ed-Eu-Helper Welcome</title>
+    <link rel="icon" type="image/x-icon" href="/static/unknown.jpeg">
+
     <link href="https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/login.css">
+    
 </head>
+<style>
+    .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
+
+
 <body >
     <div class="bg-img" >    
     </div>
 
+    
+
+
     <div class="main-container">
         <div class="form-container">
 
+
             <div class="form-body">
+                <img src="/static/unknown.jpeg" style="width:30%;height:30%" class="center">
+
+
 
                 <h2 class="title">Log in with</h2>
 
-                <form action="" method="post" class="the-form">
+                <form action="{{ url_for('login') }}" method="post" class="the-form">
                     <label for="email">Email</label>
                     <input type="email" name="username" id="email" placeholder="Enter your email">
 
