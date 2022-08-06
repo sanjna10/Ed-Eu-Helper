@@ -7,7 +7,7 @@ Over the years E-Books, Online exams, and various other new methods have come in
 ## Table of Contents
 
 - [Tech](#tech)<br/>
-- [Module](#Modules and Customized features)<br/>
+- [Module](#Modules)<br/>
 - [Data](#data)<br/>
 - [Demo](#demo)<br/>
 
@@ -45,9 +45,9 @@ Data in this project refers to proporties involved in the visualization and atta
 We try to validate the importence of each question through standardised proporties used for NAAC accredition such as COs,POs, BTLs. The teaching methodologies , exam validations and mark distrution is analysed based on the above given proporties so as to change and upgrade the curriculum.
 
 
-## Modules and Customized features
+## Modules 
 
--Login and forgot password module : User logs in through pre-existing credentials given by the admin. Features such as forgot password is implemented so as to provide an alternate mode for logging in. This sends an OTP to the verified email account where opttions will be provided to reset the password.
+- Login and forgot password module : User logs in through pre-existing credentials given by the admin. Features such as forgot password is implemented so as to provide an alternate mode for logging in. This sends an OTP to the verified email account where opttions will be provided to reset the password.
 
 - QP scanning module: Every question in an assessment has a unique property associated so as to identify its difficulty level etc. This is done through the help 3 different property metrics specified by NAAC which are COs,BTLs,DLs for the corresponding question and sub questions along with the marks allocated for each. These are followed by every college in India. This module tries to extract these features from every question given a question paper in the form of docx or pdf. This can also be extended to online quizzes and tests. A thorough QP analysis is performed with the data collected along with the student performance and attainment.
 
