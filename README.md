@@ -36,7 +36,7 @@ Over the years E-Books, Online exams, and various other new methods have come in
 
 Data in this project refers to proporties involved in the visualization and attainment process. Below is the image of the flow chat that specifies how the data is transformed through different modules in the backend to generate the desired results.
 
-<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/data_flow.png" width="50%" height="50%">
+<img src="https://github.com/sanjna10/Ed-Eu-Helper/blob/main/Images/data_flow.png" width="80%" height="80%">
 
 
 
