@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Login Page Template - W3jar.Com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/login.css">
+</head>
+<body >
+    <div class="bg-img" >    
+    </div>
+
+    <div class="main-container">
+        <div class="form-container">
+
+            <div class="form-body">
+
+                <h2 class="title">Log in with</h2>
+
+                <form action="" method="post" class="the-form">
+                    <label for="email">Email</label>
+                    <input type="email" name="username" id="email" placeholder="Enter your email">
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter your password">
+
+                    <input type="submit" name="Sign in" value="Sign in">
+                    <a  href="{{url_for('forgotpass')}}" style="padding-top:10%; text-align:center">Forget Password?</a>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+</html>
